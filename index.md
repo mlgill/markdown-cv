@@ -1,91 +1,94 @@
 ---
 layout: cv
-title: Isaac Newtons's CV
+title: Michelle Lynn Gill's CV
 ---
-# Isaac Newton
-Physicist, Mathematician, Cambridge professor.
+# {{ site.data.bio.name }}
+{{ site.data.bio.title }}
 
 <div id="webaddress">
-<a href="isaac@applesdofall.org">isaac@applesdofall.org</a>
-| <a href="http://en.wikipedia.org/wiki/Isaac_Newton">My wikipedia page</a>
+{% if site.data.socials.email %}<a href="mailto:{{ site.data.socials.email }}">{{ site.data.socials.email }}</a> | {% endif %}
+<a href="https://github.com/{{ site.data.socials.github_username }}">GitHub</a> |
+<a href="https://linkedin.com/in/{{ site.data.socials.linkedin_username }}">LinkedIn</a> |
+<a href="https://michellelynngill.com">Personal Website</a>
 </div>
-
 
 ## Currently
 
-Standing on the shoulders of giants
-
-### Specialized in
-
-Laws of motion, gravitation, minting coins, disliking [Robert Hooke](http://en.wikipedia.org/wiki/Robert_Hooke)
-
-
-### Research interests
-
-Cooling, power series, optics, alchemy, planetary motions, apples.
-
+{{ site.data.bio.bio }}
 
 ## Education
+{% assign education = site.data.cv | where: "title", "Education" | first %}
+{% for edu in education.contents %}
+`{{ edu.year }}`
+__{{ edu.title }}__
+<br>{{ edu.institution }}, {{ edu.location }}
+{% if edu.description %}
+{% for desc in edu.description %}
+- {{ desc }}
+{% endfor %}
+{% endif %}
 
-`1654-1660`
-__The King's School, Grantham.__
+{% endfor %}
 
-`June 1661 - now`
-__Trinity College, Cambridge__
+## Experience
+{% assign experience = site.data.cv | where: "title", "Selected Experience" | first %}
+{% for exp in experience.contents %}
+`{{ exp.year }}`
+__{{ exp.title }}__, {{ exp.institution }}
+{% if exp.description %}
+{% for desc in exp.description %}
+- {{ desc }}
+{% endfor %}
+{% endif %}
 
-- Sizar
-
-`1667 - death`
-__Trinity College, Cambridge__
-
-- Fellow
-
-
-
-## Awards
-
-`2012`
-President, *Royal Society*, London, UK
-
-Associate, *French Academy of Science*, Paris, France
-
-
+{% endfor %}
 
 ## Publications
 
-<!-- A list is also available [online](http://scholar.google.co.uk/citations?user=LTOTl0YAAAAJ) -->
-
-### Journals
-
-`1669`
-Newton Sir I, De analysi per æquationes numero terminorum infinitas. 
-
-`1669`
-Lectiones opticæ.
-
-etc. etc. etc.
+{% bibliography %}
 
 ### Patents
+{% for year_group in site.data.patents %}
+{% for patent in year_group.entries %}
+`{{ year_group.year }}`
+{{ patent.title }}
+- {{ patent.authors }}
+- {{ patent.details }}
 
-`2012`
-Infinitesimal calculus for solutions to physics problems, [SMBC](http://www.techdirt.com/articles/20121011/09312820678/if-patents-had-been-around-time-newton.shtml) patent 001
+{% endfor %}
+{% endfor %}
 
+## Presentations
+{% for year_group in site.data.presentations %}
+{% for pres in year_group.entries %}
+`{{ year_group.year }}`
+__{{ pres.title }}__{% if pres.venue %}, *{{ pres.venue }}*{% endif %}
+{% if pres.authors and pres.authors != "" %}- {{ pres.authors }}
+{% endif %}{% if pres.details and pres.details != "" %}- {{ pres.details }}
+{% endif %}{% if pres.links.size > 0 %}- {% if pres.links.slides %}<a href="{{ pres.links.slides }}" class="pres-slides">Slides</a>{% endif %}{% if pres.links.video %}{% if pres.links.slides %} · {% endif %}<a href="{{ pres.links.video }}" class="pres-video">Video</a>{% endif %}{% if pres.links.abstract %}{% if pres.links.slides or pres.links.video %} · {% endif %}<a href="{{ pres.links.abstract }}" class="pres-abstract">Abstract</a>{% endif %}{% if pres.links.program %}{% if pres.links.slides or pres.links.video or pres.links.abstract %} · {% endif %}<a href="{{ pres.links.program }}" class="pres-program">Program</a>{% endif %}{% if pres.links.code %}{% if pres.links.slides or pres.links.video or pres.links.abstract or pres.links.program %} · {% endif %}<a href="{{ pres.links.code }}" class="pres-code">Code</a>{% endif %}{% if pres.links.thesis %}{% if pres.links.slides or pres.links.video or pres.links.abstract or pres.links.program or pres.links.code %} · {% endif %}<a href="{{ pres.links.thesis }}" class="pres-thesis">Thesis</a>{% endif %}
+{% endif %}
+{% endfor %}
+{% endfor %}
 
-## Occupation
+## Awards
+{% assign awards = site.data.cv | where: "title", "Honors and Awards" | first %}
+{% for award in awards.contents %}
+`{{ award.year }}`
+{% for item in award.items %}
+{{ item }}
+{% endfor %}
 
-`1600`
-__Royal Mint__, London
+{% endfor %}
 
-- Warden
-- Minted coins
+## Service
+{% assign service = site.data.cv | where: "title", "Service" | first %}
+{% for svc in service.contents %}
+`{{ svc.year }}`
+__{{ svc.title }}__, {{ svc.institution }}{% if svc.location %}, {{ svc.location }}{% endif %}
+{% if svc.description %}
+{% for desc in svc.description %}
+- {{ desc }}
+{% endfor %}
+{% endif %}
 
-`1600`
-__Lucasian professor of Mathematics__, Cambridge University
-
-
-
-<!-- ### Footer
-
-Last updated: May 2013 -->
-
-
+{% endfor %}

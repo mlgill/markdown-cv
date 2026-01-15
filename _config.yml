@@ -1,2 +1,17 @@
-markdown:   kramdown
-style:  kjhealy
+markdown: kramdown
+style: davewhipp
+
+plugins:
+  - jekyll-scholar
+
+# Jekyll Scholar configuration for bibliography
+scholar:
+  style: science
+  locale: en
+  sort_by: year
+  order: descending
+  source: ./_bibliography
+  bibliography: papers.bib
+  bibliography_template: bib
+  replace_strings: true
+  group_by: none

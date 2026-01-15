@@ -63,10 +63,10 @@ body {
 
 p {
 	position: relative;
-	left: 25%;
+	left: 18%;
 	margin-bottom: 0.2em;
 	margin-right: 0;
-	width: 60%;
+	width: 58%;
 }
 
 code {
@@ -80,14 +80,19 @@ code {
 p code {
 	position: absolute;
 	text-align: right;
-	right: -20%;
+	right: -32%;
+}
+
+/* Add space between consecutive entries without lists */
+p + p {
+	margin-top: 0.8em;
 }
 
 
 ul {
 	position: relative;
-	left: 25%;
-	width: 75%;
+	left: 18%;
+	width: 72%;
 	margin-bottom: 1em;
 	/*margin-top: -0.5em;*/
 }
@@ -100,10 +105,13 @@ ul {
 }*/
 
 li {
-	/*second line indent*/
-	padding-left: 1.25em;
-	text-indent: -1.25em;
 	/*color: #777;*/
+}
+
+li p {
+	left: 0;
+	width: 100%;
+	margin-bottom: 0.2em;
 }
 
 li ul {
@@ -124,7 +132,8 @@ h1 {
 	font-size: 3em;
 	line-height: 1em;
 	position: relative;
-	left: 25%;
+	left: 18%;
+	color: #a00;
 }
 
 h1+p {
@@ -140,7 +149,7 @@ h2 {
 	position: relative;
 	top: 1.2em;
 	text-align: right;
-	width: 20%;
+	width: 14%;
 }
 
 
@@ -151,7 +160,7 @@ h3 {
 	position: relative;
 	top: 1.6em;
 	text-align: right;
-	width: 20%;
+	width: 14%;
 }
 
 a {
@@ -166,7 +175,7 @@ a:hover {
 #webaddress {
 	margin-top: 1em;
 	position: relative;
-	left: 25%;
+	left: 18%;
 	color: #ccc;
 	font-family: Monaco,Menlo,monospace,sans-serif;
 	font-size: 90%;
@@ -181,9 +190,40 @@ em {
 	color: #2d4e5e
 }
 
+/* Bibliography styling */
+h2.bibliography {
+	display: none;
+}
+
+ol.bibliography {
+	position: relative;
+	left: 0;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+ol.bibliography li {
+	margin-bottom: 0.5em;
+}
+
+ol.bibliography li p {
+	left: 18%;
+	width: 58%;
+}
+
 strong {
 	font-weight: bold;
 }
+
+/* Presentation link colors - jewel tones */
+a.pres-slides { color: #c76b00; }   /* amber */
+a.pres-video { color: #a00; }       /* ruby - matches CV red */
+a.pres-abstract { color: #0d7377; } /* teal */
+a.pres-program { color: #1a5276; }  /* sapphire */
+a.pres-code { color: #6c3483; }     /* amethyst */
+a.pres-thesis { color: #6c3483; }   /* amethyst */
 
 #ghbutton {
 	display: none;
