@@ -3,6 +3,7 @@ style: davewhipp
 
 plugins:
   - jekyll-scholar
+  - jekyll-regex-replace
 
 # Jekyll Scholar configuration for bibliography
 scholar:

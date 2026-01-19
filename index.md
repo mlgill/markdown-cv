@@ -13,7 +13,7 @@ cv_type: descriptive
 <a href="https://michellelynngill.com">Personal Website</a>
 </div>
 
-## Currently
+## Overview
 
 {{ site.data.bio.bio }}
 

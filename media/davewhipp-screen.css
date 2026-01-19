@@ -213,6 +213,12 @@ ol.bibliography li p {
 	width: 58%;
 }
 
+ol.bibliography li .publication-entry {
+	position: relative;
+	left: 18%;
+	width: 58%;
+}
+
 strong {
 	font-weight: bold;
 }
