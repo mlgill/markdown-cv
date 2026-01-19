@@ -3,6 +3,7 @@ style: davewhipp
 
 plugins:
   - jekyll-scholar
+  - jekyll-regex-replace
 
 # Jekyll Scholar configuration for bibliography
 scholar:
@@ -13,5 +14,6 @@ scholar:
   source: ./_bibliography
   bibliography: papers.bib
   bibliography_template: bib
+  bibtex_filters: [mathmode, subscript, smallcaps, superscript]
   replace_strings: true
   group_by: none

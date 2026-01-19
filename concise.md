@@ -13,7 +13,7 @@ cv_type: concise
 <a href="https://michellelynngill.com">Personal Website</a>
 </div>
 
-## Currently
+## Overview
 
 {{ site.data.bio.bio }}
 
@@ -48,7 +48,7 @@ __{{ exp.title }}__, {{ exp.institution }}
 
 ## Publications
 
-{% bibliography --query @*[selected=true] %}
+{% bibliography --template cv_bib --group_by none --query @*[selected=true] %}
 
 ### Patents
 {% for year_group in site.data.patents %}
