@@ -224,13 +224,13 @@ strong {
 	font-weight: bold;
 }
 
-/* Presentation link colors - jewel tones */
-a.pres-slides { color: #c76b00; }   /* amber */
-a.pres-video { color: #880000; }       /* ruby - matches CV red */
-a.pres-abstract { color: #0d7377; } /* teal */
-a.pres-program { color: #1a5276; }  /* sapphire */
-a.pres-code { color: #6c3483; }     /* amethyst */
-a.pres-thesis { color: #6c3483; }   /* amethyst */
+/* Presentation link colors - matching mlgill.github.io light theme */
+a.pres-slides { color: #D97706; }   /* Deep Amber */
+a.pres-video { color: #880000; }    /* Burgundy - matches CV red */
+a.pres-abstract { color: #0891B2; } /* Deep Aquamarine */
+a.pres-program { color: #1D4ED8; }  /* Deep Sapphire */
+a.pres-code { color: #7C3AED; }     /* Deep Amethyst */
+a.pres-thesis { color: #7C3AED; }   /* Deep Amethyst */
 
 #ghbutton {
 	display: none;
