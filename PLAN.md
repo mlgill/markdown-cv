@@ -45,7 +45,8 @@ markdown-cv/
 │   ├── bib.html                # Default bibliography entry template
 │   └── cv_bib.liquid           # CV bibliography template (from mlgill.github.io)
 ├── _plugins/
-│   └── load_external_data.rb   # Loads YAML from mlgill.github.io/_data/
+│   ├── load_external_data.rb   # Loads YAML from mlgill.github.io/_data/
+│   └── bibtex-filters.rb       # LaTeX to HTML conversion (superscript, subscript, italics)
 ├── media/
 │   ├── davewhipp-screen.css    # Screen styles
 │   └── davewhipp-print.css     # Print/PDF styles
@@ -226,12 +227,20 @@ plugins:
   - jekyll-regex-replace
 
 scholar:
+  last_name: [Gill, Sippel]
+  first_name: [Michelle, M.L., M.]
+
   style: science
   sort_by: year
   order: descending
   source: ./_bibliography
   bibliography: papers.bib
   bibliography_template: bib
+  replace_strings: true
+  group_by: none
+
+  # BibTeX filters to convert LaTeX notation to HTML
+  bibtex_filters: [mathmode, subscript, latex, smallcaps, superscript]
 ```
 
 ### Gemfile
@@ -255,7 +264,7 @@ gem "webrick"
 
 ## TODO
 
-- [ ] **Fix LaTeX superscript/subscript formatting** — Publications with chemical formulas (e.g., ¹³C, ²⁰⁵Tl) need proper rendering. The papers.bib uses LaTeX notation ($^{13}$C) which needs to be converted to HTML via bibtex-filters.
+- [x] **Fix LaTeX superscript/subscript formatting** — Added `_plugins/bibtex-filters.rb` with `Mathmode` and `Subscript` filters to convert LaTeX notation ($^{13}$C → <sup>13</sup>C) to HTML. Added `bibtex_filters: [mathmode, subscript, latex, smallcaps, superscript]` to `_config.yml`. Also added author highlighting via `scholar.last_name` and `scholar.first_name` settings.
 
 - [ ] **Decide on font harmonization** — markdown-cv uses Avenir; mlgill.github.io uses Roboto (Google Font). Consider whether to unify.
 

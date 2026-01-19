@@ -224,6 +224,23 @@ strong {
 	font-weight: bold;
 }
 
+/* Restore proper styling after CSS reset */
+sup {
+	vertical-align: super;
+	font-size: 0.75em;
+	line-height: 0;
+}
+
+sub {
+	vertical-align: sub;
+	font-size: 0.75em;
+	line-height: 0;
+}
+
+i {
+	font-style: italic;
+}
+
 /* Presentation link colors - matching mlgill.github.io light theme */
 a.pres-slides { color: #D97706; }   /* Deep Amber */
 a.pres-video { color: #880000; }    /* Burgundy - matches CV red */

@@ -7,6 +7,9 @@ plugins:
 
 # Jekyll Scholar configuration for bibliography
 scholar:
+  last_name: [Gill, Sippel]
+  first_name: [Michelle, M.L., M.]
+
   style: science
   locale: en
   sort_by: year
@@ -16,3 +19,8 @@ scholar:
   bibliography_template: bib
   replace_strings: true
   group_by: none
+
+  # BibTeX filters to convert LaTeX notation to HTML
+  # Note: if you have latex math in your bibtex, the latex filter
+  # preprocessing may conflict with MathJAX if the latter is enabled.
+  bibtex_filters: [mathmode, subscript, latex, smallcaps, superscript]
