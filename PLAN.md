@@ -246,6 +246,10 @@ gem "webrick"
 
 - [ ] **Combine repositories** — Eventually merge markdown-cv into mlgill.github.io as a subdirectory or build target
 
-- [ ] **Implement `selected` flag filtering** — Use `selected: true` entries for an abbreviated CV version
+- [x] **Implement `selected` flag filtering** — Two CV versions now available:
+  - `descriptive.md` → `GillMichelle_DescriptiveCV.pdf`: Shows entries where `visible != false`
+  - `concise.md` → `GillMichelle_ConciseCV.pdf`: Shows entries where `visible != false AND selected == true`
+  - Footer format: "Michelle Lynn Gill, [CV Type]" | "Page X of Y" | "[Date]"
+  - Use `npm run pdf` to generate both, or `npm run pdf:descriptive` / `npm run pdf:concise` for individual
 
 - [x] **Add npm scripts to package.json** — `npm run pdf`, `npm run serve`, etc.

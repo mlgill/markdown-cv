@@ -6,7 +6,11 @@
     "serve": "bundle exec jekyll serve --port 4001",
     "build": "bundle exec jekyll build",
     "pdf": "node generate-pdf.js",
-    "pdf:open": "node generate-pdf.js && open GillMichelle_CV.pdf"
+    "pdf:descriptive": "node generate-pdf.js descriptive",
+    "pdf:concise": "node generate-pdf.js concise",
+    "pdf:open": "node generate-pdf.js && open GillMichelle_DescriptiveCV.pdf GillMichelle_ConciseCV.pdf",
+    "pdf:open:descriptive": "node generate-pdf.js descriptive && open GillMichelle_DescriptiveCV.pdf",
+    "pdf:open:concise": "node generate-pdf.js concise && open GillMichelle_ConciseCV.pdf"
   },
   "dependencies": {
     "puppeteer-core": "^24.35.0"

@@ -74,7 +74,7 @@ code {
 	font-size: 90%;
 	/*line-height: 1em;*/
 	font-family: Monaco,Menlo,monospace,sans-serif;
-	color: #ccc;
+	color: #888;
 }
 
 p code {
@@ -130,10 +130,11 @@ h1,h2,h3,h4 {
 h1 {
 	text-align: left;
 	font-size: 3em;
+	font-weight: 500;
 	line-height: 1em;
 	position: relative;
 	left: 18%;
-	color: #a00;
+	color: #880000;
 }
 
 h1+p {
@@ -144,7 +145,7 @@ h1+p {
 
 h2 {
 	font-size: 1.1em;
-	color: #a00;
+	color: #880000;
 	margin-top: 2em;
 	position: relative;
 	top: 1.2em;
@@ -156,7 +157,7 @@ h2 {
 h3 {
 	font-size: 1em;
 	line-height: 2em;
-	color: #ccc;
+	color: #888;
 	position: relative;
 	top: 1.6em;
 	text-align: right;
@@ -176,7 +177,7 @@ a:hover {
 	margin-top: 1em;
 	position: relative;
 	left: 18%;
-	color: #ccc;
+	color: #888;
 	font-family: Monaco,Menlo,monospace,sans-serif;
 	font-size: 90%;
 }
@@ -219,7 +220,7 @@ strong {
 
 /* Presentation link colors - jewel tones */
 a.pres-slides { color: #c76b00; }   /* amber */
-a.pres-video { color: #a00; }       /* ruby - matches CV red */
+a.pres-video { color: #880000; }       /* ruby - matches CV red */
 a.pres-abstract { color: #0d7377; } /* teal */
 a.pres-program { color: #1a5276; }  /* sapphire */
 a.pres-code { color: #6c3483; }     /* amethyst */
