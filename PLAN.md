@@ -16,10 +16,13 @@ bundle exec jekyll serve --port 4001
 ### Generate PDF
 ```bash
 # Requires: npm install puppeteer-core
-node generate-pdf.js
+npm run pdf                    # Generate both PDFs
+npm run pdf:descriptive        # Generate descriptive CV only
+npm run pdf:concise            # Generate concise CV only
+npm run pdf:open               # Generate and open both
 ```
-This generates `GillMichelle_CV.pdf` with:
-- Custom footer (name, date, page numbers) using Avenir font
+Generates `GillMichelle_DescriptiveCV.pdf` and `GillMichelle_ConciseCV.pdf` with:
+- Custom footer: "Michelle Lynn Gill · [CV Type]" | "Page X of Y" | "Prepared MM/DD/YYYY"
 - 0.5" margins (0.75" bottom for footer)
 - Letter size format
 
@@ -48,7 +51,8 @@ markdown-cv/
 ├── _config.yml                 # Jekyll + Scholar configuration
 ├── Gemfile                     # Ruby dependencies
 ├── netlify.toml                # Netlify deployment config
-├── index.md                    # CV content with Liquid templating
+├── index.md                    # Descriptive CV (all visible entries)
+├── concise.md                  # Concise CV (selected entries only)
 ├── generate-pdf.js             # Puppeteer PDF generation script
 ├── package.json                # Node.js dependencies (puppeteer-core)
 └── PLAN.md                     # This file
@@ -193,8 +197,10 @@ Links from mlgill.github.io data that start with `/` are converted to absolute U
 - Paragraph width: 58%
 - Year codes positioned at right: -32%
 
-### Name Styling
-- h1 color: #bc412b (screen) / #a00 (print)
+### Color Scheme
+- Name/headings (h1, h2): #880000 (dark red)
+- Year codes, subheadings (h3), contact links: #888 (gray)
+- Name font-weight: 500
 
 ### Bibliography
 - `ol.bibliography`: no list styling, full width container
@@ -247,9 +253,9 @@ gem "webrick"
 - [ ] **Combine repositories** — Eventually merge markdown-cv into mlgill.github.io as a subdirectory or build target
 
 - [x] **Implement `selected` flag filtering** — Two CV versions now available:
-  - `descriptive.md` → `GillMichelle_DescriptiveCV.pdf`: Shows entries where `visible != false`
+  - `index.md` → `GillMichelle_DescriptiveCV.pdf`: Shows entries where `visible != false`
   - `concise.md` → `GillMichelle_ConciseCV.pdf`: Shows entries where `visible != false AND selected == true`
-  - Footer format: "Michelle Lynn Gill, [CV Type]" | "Page X of Y" | "[Date]"
+  - Footer format: "Michelle Lynn Gill · [CV Type]" | "Page X of Y" | "Prepared MM/DD/YYYY"
   - Use `npm run pdf` to generate both, or `npm run pdf:descriptive` / `npm run pdf:concise` for individual
 
 - [x] **Add npm scripts to package.json** — `npm run pdf`, `npm run serve`, etc.
