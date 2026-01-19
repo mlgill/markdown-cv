@@ -23,11 +23,11 @@ Note: jekyll-scholar wraps this in <li>, so we just output the content
     {%- endfor -%}
   </span>
   {% if entry.doi %}
-    <span class="title"><a href="https://doi.org/{{ entry.doi }}" target="_blank">"{{ entry.title }}"</a></span>
+    <span class="title"><strong><a href="https://doi.org/{{ entry.doi }}" target="_blank">"{{ entry.title }}"</a></strong></span>
   {% elsif entry.html %}
-    <span class="title"><a href="{{ entry.html }}" target="_blank">"{{ entry.title }}"</a></span>
+    <span class="title"><strong><a href="{{ entry.html }}" target="_blank">"{{ entry.title }}"</a></strong></span>
   {% else %}
-    <span class="title">"{{ entry.title }}"</span>
+    <span class="title"><strong>"{{ entry.title }}"</strong></span>
   {% endif %}
   <span class="venue"><em>{{ entry.journal }}</em></span>
   {% if entry.year %}<span class="year">({{ entry.year }})</span>{% endif %}.

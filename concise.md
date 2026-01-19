@@ -55,7 +55,7 @@ __{{ exp.title }}__, {{ exp.institution }}
 {% for patent in year_group.entries %}
 {% if patent.visible != false and patent.selected == true %}
 `{{ year_group.year }}`
-{{ patent.title }}
+__{{ patent.title }}__
 - {{ patent.authors }}
 - {{ patent.details }}
 
@@ -81,9 +81,7 @@ __{{ pres.title }}__{% if pres.venue %}, *{{ pres.venue }}*{% endif %}
 {% for award in site.data.awards %}
 {% if award.visible != false and award.selected == true %}
 `{{ award.year }}`
-{% for item in award.items %}
-{{ item }}
-{% endfor %}
+{{ award.items | join: "; " }}
 
 {% endif %}
 {% endfor %}
