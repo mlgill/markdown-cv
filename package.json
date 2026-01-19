@@ -1,0 +1,14 @@
+{
+  "name": "markdown-cv",
+  "version": "1.0.0",
+  "description": "CV generation from YAML/BibTeX data using Jekyll",
+  "scripts": {
+    "serve": "bundle exec jekyll serve --port 4001",
+    "build": "bundle exec jekyll build",
+    "pdf": "node generate-pdf.js",
+    "pdf:open": "node generate-pdf.js && open GillMichelle_CV.pdf"
+  },
+  "dependencies": {
+    "puppeteer-core": "^24.35.0"
+  }
+}

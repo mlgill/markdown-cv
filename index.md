@@ -17,8 +17,8 @@ title: Michelle Lynn Gill's CV
 {{ site.data.bio.bio }}
 
 ## Education
-{% assign education = site.data.cv | where: "title", "Education" | first %}
-{% for edu in education.contents %}
+{% for edu in site.data.education %}
+{% if edu.visible != false %}
 `{{ edu.year }}`
 __{{ edu.title }}__
 <br>{{ edu.institution }}, {{ edu.location }}
@@ -28,11 +28,12 @@ __{{ edu.title }}__
 {% endfor %}
 {% endif %}
 
+{% endif %}
 {% endfor %}
 
 ## Experience
-{% assign experience = site.data.cv | where: "title", "Selected Experience" | first %}
-{% for exp in experience.contents %}
+{% for exp in site.data.experience %}
+{% if exp.visible != false %}
 `{{ exp.year }}`
 __{{ exp.title }}__, {{ exp.institution }}
 {% if exp.description %}
@@ -41,6 +42,7 @@ __{{ exp.title }}__, {{ exp.institution }}
 {% endfor %}
 {% endif %}
 
+{% endif %}
 {% endfor %}
 
 ## Publications
@@ -50,39 +52,44 @@ __{{ exp.title }}__, {{ exp.institution }}
 ### Patents
 {% for year_group in site.data.patents %}
 {% for patent in year_group.entries %}
+{% if patent.visible != false %}
 `{{ year_group.year }}`
 {{ patent.title }}
 - {{ patent.authors }}
 - {{ patent.details }}
 
+{% endif %}
 {% endfor %}
 {% endfor %}
 
 ## Presentations
 {% for year_group in site.data.presentations %}
 {% for pres in year_group.entries %}
+{% if pres.visible != false %}
 `{{ year_group.year }}`
 __{{ pres.title }}__{% if pres.venue %}, *{{ pres.venue }}*{% endif %}
 {% if pres.authors and pres.authors != "" %}- {{ pres.authors }}
-{% endif %}{% if pres.details and pres.details != "" %}- {{ pres.details }}
-{% endif %}{% if pres.links.size > 0 %}- {% if pres.links.slides %}<a href="{{ pres.links.slides }}" class="pres-slides">Slides</a>{% endif %}{% if pres.links.video %}{% if pres.links.slides %} · {% endif %}<a href="{{ pres.links.video }}" class="pres-video">Video</a>{% endif %}{% if pres.links.abstract %}{% if pres.links.slides or pres.links.video %} · {% endif %}<a href="{{ pres.links.abstract }}" class="pres-abstract">Abstract</a>{% endif %}{% if pres.links.program %}{% if pres.links.slides or pres.links.video or pres.links.abstract %} · {% endif %}<a href="{{ pres.links.program }}" class="pres-program">Program</a>{% endif %}{% if pres.links.code %}{% if pres.links.slides or pres.links.video or pres.links.abstract or pres.links.program %} · {% endif %}<a href="{{ pres.links.code }}" class="pres-code">Code</a>{% endif %}{% if pres.links.thesis %}{% if pres.links.slides or pres.links.video or pres.links.abstract or pres.links.program or pres.links.code %} · {% endif %}<a href="{{ pres.links.thesis }}" class="pres-thesis">Thesis</a>{% endif %}
+{% endif %}{% if pres.type and pres.type != "" %}- {{ pres.type }}{% if pres.date %}, {{ pres.date }}{% endif %}{% if pres.location %}, {{ pres.location }}{% endif %}
+{% endif %}{% if pres.links.slides or pres.links.video or pres.links.abstract or pres.links.program or pres.links.code or pres.links.thesis %}- {% if pres.links.slides %}{% if pres.links.slides contains "://" %}<a href="{{ pres.links.slides }}" class="pres-slides">Slides</a>{% else %}<a href="https://mlgill.github.io{{ pres.links.slides }}" class="pres-slides">Slides</a>{% endif %}{% endif %}{% if pres.links.video %}{% if pres.links.slides %} · {% endif %}<a href="{{ pres.links.video }}" class="pres-video">Video</a>{% endif %}{% if pres.links.abstract %}{% if pres.links.slides or pres.links.video %} · {% endif %}{% if pres.links.abstract contains "://" %}<a href="{{ pres.links.abstract }}" class="pres-abstract">Abstract</a>{% else %}<a href="https://mlgill.github.io{{ pres.links.abstract }}" class="pres-abstract">Abstract</a>{% endif %}{% endif %}{% if pres.links.program %}{% if pres.links.slides or pres.links.video or pres.links.abstract %} · {% endif %}{% if pres.links.program contains "://" %}<a href="{{ pres.links.program }}" class="pres-program">Program</a>{% else %}<a href="https://mlgill.github.io{{ pres.links.program }}" class="pres-program">Program</a>{% endif %}{% endif %}{% if pres.links.code %}{% if pres.links.slides or pres.links.video or pres.links.abstract or pres.links.program %} · {% endif %}<a href="{{ pres.links.code }}" class="pres-code">Code</a>{% endif %}{% if pres.links.thesis %}{% if pres.links.slides or pres.links.video or pres.links.abstract or pres.links.program or pres.links.code %} · {% endif %}{% if pres.links.thesis contains "://" %}<a href="{{ pres.links.thesis }}" class="pres-thesis">Thesis</a>{% else %}<a href="https://mlgill.github.io{{ pres.links.thesis }}" class="pres-thesis">Thesis</a>{% endif %}{% endif %}
+{% endif %}
 {% endif %}
 {% endfor %}
 {% endfor %}
 
 ## Awards
-{% assign awards = site.data.cv | where: "title", "Honors and Awards" | first %}
-{% for award in awards.contents %}
+{% for award in site.data.awards %}
+{% if award.visible != false %}
 `{{ award.year }}`
 {% for item in award.items %}
 {{ item }}
 {% endfor %}
 
+{% endif %}
 {% endfor %}
 
 ## Service
-{% assign service = site.data.cv | where: "title", "Service" | first %}
-{% for svc in service.contents %}
+{% for svc in site.data.service %}
+{% if svc.visible != false %}
 `{{ svc.year }}`
 __{{ svc.title }}__, {{ svc.institution }}{% if svc.location %}, {{ svc.location }}{% endif %}
 {% if svc.description %}
@@ -91,4 +98,5 @@ __{{ svc.title }}__, {{ svc.institution }}{% if svc.location %}, {{ svc.location
 {% endfor %}
 {% endif %}
 
+{% endif %}
 {% endfor %}
