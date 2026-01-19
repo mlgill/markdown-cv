@@ -42,7 +42,8 @@ markdown-cv/
 │   └── papers.bib              # → Symlink to mlgill.github.io/_bibliography/papers.bib
 ├── _layouts/
 │   ├── cv.html                 # Main CV layout
-│   └── bib.html                # Custom bibliography entry template
+│   ├── bib.html                # Default bibliography entry template
+│   └── cv_bib.liquid           # CV bibliography template (from mlgill.github.io)
 ├── _plugins/
 │   └── load_external_data.rb   # Loads YAML from mlgill.github.io/_data/
 ├── media/
@@ -88,7 +89,7 @@ Each YAML entry supports:
 |------------|--------|--------|
 | Name & Title | `bio.yml` | YAML |
 | Contact Links | `socials.yml` | YAML |
-| Currently (Bio) | `bio.yml` | YAML (markdown) |
+| Overview (Bio) | `bio.yml` | YAML (markdown) |
 | Education | `education.yml` | YAML |
 | Experience | `experience.yml` | YAML |
 | Publications | `papers.bib` | BibTeX |
@@ -101,7 +102,7 @@ Each YAML entry supports:
 
 1. Name & Title (red)
 2. Contact Links (GitHub, LinkedIn, Personal Website)
-3. Currently (bio paragraph)
+3. Overview (bio paragraph)
 4. Education
 5. Experience
 6. Publications
@@ -202,6 +203,13 @@ Links from mlgill.github.io data that start with `/` are converted to absolute U
 - Year codes, subheadings (h3), contact links: #888 (gray)
 - Name font-weight: 500
 
+### Presentation Link Colors (matching mlgill.github.io light theme)
+- Slides: #D97706 (Deep Amber)
+- Video: #880000 (Burgundy)
+- Abstract: #0891B2 (Deep Aquamarine)
+- Program: #1D4ED8 (Deep Sapphire)
+- Code/Thesis: #7C3AED (Deep Amethyst)
+
 ### Bibliography
 - `ol.bibliography`: no list styling, full width container
 - `ol.bibliography li p`: positioned at 18% left, 58% width
@@ -215,6 +223,7 @@ style: davewhipp
 
 plugins:
   - jekyll-scholar
+  - jekyll-regex-replace
 
 scholar:
   style: science
@@ -230,6 +239,7 @@ scholar:
 source "https://rubygems.org"
 gem "jekyll", "~> 4.3"
 gem "jekyll-scholar", "~> 7.0"
+gem "jekyll-regex-replace"
 gem "kramdown-parser-gfm"
 gem "webrick"
 ```
@@ -245,6 +255,12 @@ gem "webrick"
 
 ## TODO
 
+- [ ] **Fix LaTeX superscript/subscript formatting** — Publications with chemical formulas (e.g., ¹³C, ²⁰⁵Tl) need proper rendering. The papers.bib uses LaTeX notation ($^{13}$C) which needs to be converted to HTML via bibtex-filters.
+
+- [ ] **Decide on font harmonization** — markdown-cv uses Avenir; mlgill.github.io uses Roboto (Google Font). Consider whether to unify.
+
+- [ ] **Fix line breaks with dates** — Titles break too early when there's a date on the same row, causing awkward line breaks like "**Senior Data Scientist**,\nBenevolentAI" in PDFs.
+
 - [ ] **Hide footer on first page of PDF** — Puppeteer's header/footer templates don't reliably execute JavaScript. Possible approaches:
   - Post-process PDF with a library (pdf-lib, PyPDF2) to remove footer from page 1
   - Use CSS `@page :first` in the main document (but doesn't affect Puppeteer's isolated footer)
@@ -259,3 +275,9 @@ gem "webrick"
   - Use `npm run pdf` to generate both, or `npm run pdf:descriptive` / `npm run pdf:concise` for individual
 
 - [x] **Add npm scripts to package.json** — `npm run pdf`, `npm run serve`, etc.
+
+- [x] **Add cv_bib template** — Both CV versions now use cv_bib.liquid template from mlgill.github.io for consistent formatting.
+
+- [x] **Update presentation link colors** — Colors now match mlgill.github.io light theme (Deep Amber, Burgundy, Deep Aquamarine, Deep Sapphire, Deep Amethyst).
+
+- [x] **Improve publication/patent formatting** — Paper titles now bold with quotes, journals italic; patent titles bold without quotes; awards properly aligned.
