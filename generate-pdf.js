@@ -10,10 +10,11 @@
  *   node generate-pdf.js <url> <output>     # Legacy: custom URL and output
  */
 
-const puppeteer = require('puppeteer-core');
+// const puppeteer = require('puppeteer-core');
+const puppeteer = require('puppeteer');
 const path = require('path');
 
-const CHROMIUM_PATH = '/Applications/Chromium.app/Contents/MacOS/Chromium';
+// const CHROMIUM_PATH = '/Applications/Chromium.app/Contents/MacOS/Chromium';
 const BASE_URL = 'http://localhost:4001';
 
 // CV configurations
@@ -58,7 +59,7 @@ function getFooterTemplate(cvTitle) {
  */
 async function generatePDF(url, outputPath, cvTitle) {
   const browser = await puppeteer.launch({
-    executablePath: CHROMIUM_PATH,
+    // executablePath: CHROMIUM_PATH,  // Not needed with full puppeteer
     headless: true,
   });
 

@@ -13,6 +13,6 @@
     "pdf:open:concise": "node generate-pdf.js concise && open GillMichelle_ConciseCV.pdf"
   },
   "dependencies": {
-    "puppeteer-core": "^24.35.0"
+    "puppeteer": "^24.0.0"
   }
 }
